@@ -1,1 +1,20 @@
+{
+  "bindings": [
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "inputDocuments",
+      "databaseName": "game",
+      "collectionName": "events",
+      "sqlQuery": "SELECT * FROM c"
+    },
+    {
+      "type": "blob",
+      "direction": "out",
+      "name": "outputBlob",
+      "path": "analytics/summary.json",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
 
