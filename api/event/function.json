@@ -1,1 +1,21 @@
+{
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["post"],
+      "authLevel": "anonymous"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputDocument",
+      "databaseName": "game",
+      "collectionName": "events",
+      "createIfNotExists": true,
+      "connectionStringSetting": "CosmosDB"
+    }
+  ]
+}
 
