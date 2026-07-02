@@ -1,7 +1,12 @@
 const config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: window.innerWidth,
+    height: window.innerHeight,
+
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
     physics: {
         default: 'arcade',
         arcade: {
@@ -28,7 +33,7 @@ function create() {
     // Temporary background so stars are visible
     this.cameras.main.setBackgroundColor('#222222');
 
-    player = this.physics.add.sprite(400, 300, 'player');
+    player.setScale(0.15);
 
     // Spawn stars in the middle of the screen
     stars = this.physics.add.group({
@@ -37,8 +42,13 @@ function create() {
         setXY: { x: 100, y: 300, stepX: 120 }
     });
 
-    stars.children.iterate(function (child) {
-        child.setBounceY(Phaser.Math.FloatBetween(0.2, 0.5));
+    stars.children.iterate(child => {
+
+    child.setScale(0.08);
+
+    child.setBounceY(
+        Phaser.Math.FloatBetween(0.2,0.5)
+    );
     });
 
     this.physics.add.overlap(player, stars, collectStar, null, this);
