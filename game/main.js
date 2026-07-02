@@ -20,8 +20,11 @@ function create() {
 
     stars = this.physics.add.group({
         key: 'star',
-        repeat: 10,
-        setXY: { x: 12, y: 12, stepX: 70 }
+        repeat: 5,
+        setXY: { x: 50, y: 50, stepX: 120 }
+    });
+    stars.children.iterate(function (child) {
+    child.setBounceY(Phaser.Math.FloatBetween(0.2, 0.5));
     });
 
     this.physics.add.overlap(player, stars, collectStar, null, this);
