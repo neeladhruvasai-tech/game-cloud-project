@@ -25,30 +25,22 @@ function preload() {
 }
 
 function create() {
-    // Background (optional)
-    this.add.rectangle(400, 300, 800, 600, 0x1a1a1a);
+    // Temporary background so stars are visible
+    this.cameras.main.setBackgroundColor('#222222');
 
-    // Player
     player = this.physics.add.sprite(400, 300, 'player');
-    player.setCollideWorldBounds(true);
 
-    // Controls
-    cursors = this.input.keyboard.createCursorKeys();
-
-    // Stars (spawn in middle)
+    // Spawn stars in the middle of the screen
     stars = this.physics.add.group({
         key: 'star',
-        repeat: 7,
-        setXY: { x: 80, y: 200, stepX: 100 }
+        repeat: 5,
+        setXY: { x: 100, y: 300, stepX: 120 }
     });
 
-    // Score UI
-    scoreText = this.add.text(16, 16, 'Score: 0', {
-        fontSize: '24px',
-        fill: '#ffffff'
+    stars.children.iterate(function (child) {
+        child.setBounceY(Phaser.Math.FloatBetween(0.2, 0.5));
     });
 
-    // Collision
     this.physics.add.overlap(player, stars, collectStar, null, this);
 }
 
