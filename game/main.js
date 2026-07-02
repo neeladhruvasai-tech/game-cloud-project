@@ -16,19 +16,25 @@ function preload() {
 }
 
 function create() {
+    // Temporary background so stars are visible
+    this.cameras.main.setBackgroundColor('#222222');
+
     player = this.physics.add.sprite(400, 300, 'player');
 
+    // Spawn stars in the middle of the screen
     stars = this.physics.add.group({
         key: 'star',
         repeat: 5,
-        setXY: { x: 50, y: 50, stepX: 120 }
+        setXY: { x: 100, y: 300, stepX: 120 }
     });
+
     stars.children.iterate(function (child) {
-    child.setBounceY(Phaser.Math.FloatBetween(0.2, 0.5));
+        child.setBounceY(Phaser.Math.FloatBetween(0.2, 0.5));
     });
 
     this.physics.add.overlap(player, stars, collectStar, null, this);
 }
+
 
 function update() {
     const cursors = this.input.keyboard.createCursorKeys();
