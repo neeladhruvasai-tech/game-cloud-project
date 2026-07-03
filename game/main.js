@@ -1,3 +1,10 @@
+const GAME = {
+    PLAYER_SPEED: 250,
+    PLAYER_SCALE: 0.15,
+    OBJECT_SCALE: 0.08,
+    START_TIME: 60,
+    STAR_POINTS: 10
+};
 const config = {
     type: Phaser.AUTO,
 
@@ -25,7 +32,7 @@ const config = {
 };
 
 let player;
-let stars;
+let energyCrystals;
 let cursors;
 let score = 0;
 let scoreText;
@@ -47,7 +54,7 @@ function create() {
         'player'
     );
 
-    player.setScale(0.15);
+    player.setScale(GAME.PLAYER_SCALE);
     player.setCollideWorldBounds(true);
 
     // Keyboard
@@ -59,8 +66,8 @@ function create() {
         color: "#ffffff"
     });
 
-    // Create stars
-    stars = this.physics.add.group({
+    // Create energyCrystals
+    energyCrystals = this.physics.add.group({
         key: 'star',
         repeat: 5,
         setXY: {
@@ -70,9 +77,9 @@ function create() {
         }
     });
 
-    stars.children.iterate(function (child) {
+    energyCrystals.children.iterate(function (child) {
 
-        child.setScale(0.08);
+        child.setScale(GAME.OBJECT_SCALE);
 
         child.setBounceY(
             Phaser.Math.FloatBetween(0.2, 0.5)
@@ -83,7 +90,7 @@ function create() {
     // Detect collection
     this.physics.add.overlap(
         player,
-        stars,
+        energyCrystals,
         collectStar,
         null,
         this
@@ -95,23 +102,23 @@ function update() {
     player.setVelocity(0);
 
     if (cursors.left.isDown) {
-        player.setVelocityX(-250);
+        player.setVelocityX(GAME.PLAYER_SPEED);
     }
 
     if (cursors.right.isDown) {
-        player.setVelocityX(250);
+        player.setVelocityX(GAME.PLAYER_SPEED);
     }
 
     if (cursors.up.isDown) {
-        player.setVelocityY(-250);
+        player.setVelocityY(GAME.PLAYER_SPEED);
     }
 
     if (cursors.down.isDown) {
-        player.setVelocityY(250);
+        player.setVelocityY(GAME.PLAYER_SPEED);
     }
 }
 
-function collectStar(player, star) {
+function collectEnergyCrystal(player, energyCrystals) {
 
     star.disableBody(true, true);
 
@@ -122,7 +129,7 @@ function collectStar(player, star) {
     sendEvent("score", score);
 
     // Win condition
-    if (stars.countActive(true) === 0) {
+    if (energyCrystals.countActive(true) === 0) {
 
         this.add.text(
             config.width / 2 - 120,
