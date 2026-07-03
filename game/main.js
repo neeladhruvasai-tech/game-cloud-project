@@ -52,7 +52,7 @@ function create() {
     background = this.add.image(config.width / 2, config.height / 2, 'background');
     background.setScale(0.3);
     background.setDepth(-1);
-    background = this.physics.add.image(
+    background = this.add.image(
     config.width / 2,
     config.height / 2,
     'background'
