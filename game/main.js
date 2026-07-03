@@ -102,27 +102,27 @@ function update() {
     player.setVelocity(0);
 
     if (cursors.left.isDown) {
-        player.setVelocityX(GAME.PLAYER_SPEED);
+        player.setVelocityX(-GAME.PLAYER_SPEED);
     }
 
     if (cursors.right.isDown) {
-        player.setVelocityX(GAME.PLAYER_SPEED);
+        player.setVelocityX(+GAME.PLAYER_SPEED);
     }
 
     if (cursors.up.isDown) {
-        player.setVelocityY(GAME.PLAYER_SPEED);
+        player.setVelocityY(-GAME.PLAYER_SPEED);
     }
 
     if (cursors.down.isDown) {
-        player.setVelocityY(GAME.PLAYER_SPEED);
+        player.setVelocityY(+GAME.PLAYER_SPEED);
     }
 }
 
-function collectEnergyCrystal(player, energyCrystals) {
+function collectEnergyCrystal(player, energyCrystal) {
 
-    energyCrystals.disableBody(true, true);
+    energyCrystal.disableBody(true, true);
 
-    score += 10;
+    score += GAME.STAR_POINTS;
 
     scoreText.setText("Score: " + score);
 
