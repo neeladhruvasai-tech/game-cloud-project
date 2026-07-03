@@ -48,8 +48,17 @@ function preload() {
 
 function create() {
     background = this.add.image(config.width / 2, config.height / 2, 'background');
-    background.setDisplaySize(config.width, config.height);
+
+    // Scale to COVER the entire canvas (no distortion, no gaps)
+    const scaleX = config.width / background.width;
+    const scaleY = config.height / background.height;
+    const scale = Math.max(scaleX, scaleY); // use the LARGER ratio to fully cover
+    background.setScale(scale);
     background.setDepth(-1);
+
+    console.log('Background texture size:', background.width, background.height);
+    console.log('Canvas size:', config.width, config.height);
+    console.log('Applied scale:', scale);
     // Create player
     player = this.physics.add.sprite(
         config.width / 2,
