@@ -48,6 +48,7 @@ function preload() {
 
 function create() {
 
+    console.log(this.textures.exists('background'));
     const background = this.add.image(
     config.width / 2,
     config.height / 2,
