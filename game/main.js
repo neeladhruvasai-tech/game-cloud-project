@@ -5,8 +5,6 @@ const GAME = {
     START_TIME: 60,
     STAR_POINTS: 10
 };
-const background = this.add.image(200, 200, 'background');
-background.setScale(0.3);
 const config = {
     type: Phaser.AUTO,
 
