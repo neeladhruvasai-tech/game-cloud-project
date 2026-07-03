@@ -5,6 +5,11 @@ const GAME = {
     START_TIME: 60,
     STAR_POINTS: 10
 };
+const background = this.add.image(
+    config.width / 2,
+    config.height / 2,
+    'background'
+);
 const config = {
     type: Phaser.AUTO,
 
@@ -49,7 +54,7 @@ function preload() {
 function create() {
 
     console.log(this.textures.exists('background'));
-    background = this.add.image(
+    background = this.physics.add.image(
     config.width / 2,
     config.height / 2,
     'background'
