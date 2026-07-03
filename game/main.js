@@ -49,8 +49,9 @@ function preload() {
 }
 
 function create() {
-
-    console.log(this.textures.exists('background'));
+    background = this.add.image(config.width / 2, config.height / 2, 'background');
+    background.setScale(0.3);
+    background.setDepth(-1);
     background = this.physics.add.image(
     config.width / 2,
     config.height / 2,
@@ -62,7 +63,6 @@ function create() {
         config.height / 2,
         'player'
     );
-
     player.setScale(GAME.PLAYER_SCALE);
     player.setCollideWorldBounds(true);
 
