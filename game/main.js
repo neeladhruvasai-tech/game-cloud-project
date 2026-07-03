@@ -49,11 +49,8 @@ function preload() {
 function create() {
 
     console.log(this.textures.exists('background'));
-    const background = this.add.image(
-    config.width / 2,
-    config.height / 2,
-    'background'
-    );
+    const background = this.add.image(200, 200, 'background');
+    background.setScale(0.3);
     // Create player
     player = this.physics.add.sprite(
         config.width / 2,
