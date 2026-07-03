@@ -48,7 +48,7 @@ function preload() {
 
 function create() {
     background = this.add.image(config.width / 2, config.height / 2, 'background');
-    background.setScale(0.3);
+    background.setDisplaySize(config.width, config.height);
     background.setDepth(-1);
     // Create player
     player = this.physics.add.sprite(
