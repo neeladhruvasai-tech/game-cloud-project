@@ -91,7 +91,7 @@ function create() {
     this.physics.add.overlap(
         player,
         energyCrystals,
-        collectStar,
+        collectEnergyCrystal,
         null,
         this
     );
@@ -120,7 +120,7 @@ function update() {
 
 function collectEnergyCrystal(player, energyCrystals) {
 
-    star.disableBody(true, true);
+    energyCrystals.disableBody(true, true);
 
     score += 10;
 
