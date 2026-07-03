@@ -52,11 +52,6 @@ function create() {
     background = this.add.image(config.width / 2, config.height / 2, 'background');
     background.setScale(0.3);
     background.setDepth(-1);
-    background = this.add.image(
-    config.width / 2,
-    config.height / 2,
-    'background'
-    );
     // Create player
     player = this.physics.add.sprite(
         config.width / 2,
