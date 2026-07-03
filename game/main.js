@@ -38,15 +38,21 @@ let score = 0;
 let scoreText;
 
 function preload() {
+    this.load.image(
+    'background',
+    'assets/backgrounds/background.jpg'
+    );
     this.load.image('player', 'assets/player.png');
     this.load.image('star', 'assets/star.png');
 }
 
 function create() {
 
-    // Background color
-    this.cameras.main.setBackgroundColor('#222222');
-
+    const background = this.add.image(
+    config.width / 2,
+    config.height / 2,
+    'background'
+    );
     // Create player
     player = this.physics.add.sprite(
         config.width / 2,
