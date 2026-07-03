@@ -38,10 +38,7 @@ let score = 0;
 let scoreText;
 
 function preload() {
-    this.load.image(
-    'background',
-    'assets/backgrounds/background.jpg'
-    );
+    this.load.image('background','backgrounds/background.jpg');
     this.load.image('player', 'assets/player.png');
     this.load.image('star', 'assets/star.png');
 }
