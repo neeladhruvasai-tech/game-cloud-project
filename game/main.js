@@ -86,13 +86,17 @@ function create() {
     });
 
     energyCrystals.children.iterate(function (child) {
+    child.setScale(GAME.OBJECT_SCALE);
+    child.setCollideWorldBounds(true);
+    child.setBounce(1, 1); // bounce fully off walls, both axes
 
-        child.setScale(GAME.OBJECT_SCALE);
-
-        child.setBounceY(
-            Phaser.Math.FloatBetween(0.2, 0.5)
-        );
-
+    // Give each crystal a random drift direction
+    const angle = Phaser.Math.FloatBetween(0, Math.PI * 2);
+    const speed = 80; // slower than player so they're catchable
+    child.setVelocity(
+        Math.cos(angle) * speed,
+        Math.sin(angle) * speed
+    );
     });
 
     // Detect collection
