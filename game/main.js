@@ -4,7 +4,7 @@ const GAME = {
     OBJECT_SCALE: 0.08,
     START_TIME: 60,
     STAR_POINTS: 10,
-    CRYSTAL_SPEED: 80,
+    CRYSTAL_SPEED: 100,
 };
 const config = {
     type: Phaser.AUTO,
